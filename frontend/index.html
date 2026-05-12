@@ -1467,6 +1467,7 @@ function HomeScreen() {
   const reimb = useReimbursementsOutstanding();
   const today = useTodayView();
   const portfolio = usePortfolioSnapshot();
+if (!portfolio || !portfolio.current_price) return null;
 
   const reimbTotal = reimb.reduce((s, r) => s + r.owes, 0);
 
