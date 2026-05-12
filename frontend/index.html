@@ -1470,7 +1470,6 @@ function HomeScreen() {
   const reimb = useReimbursementsOutstanding();
   const today = useTodayView();
   const portfolio = usePortfolioSnapshot();
-  if (!portfolio || !portfolio.current_price) return null;
 
   const reimbTotal = reimb.reduce((s, r) => s + r.owes, 0);
 
@@ -2274,7 +2273,6 @@ function PortfolioScreen() {
   const [query, setQuery] = useState('');
   const [running, setRunning] = useState(false);
   const [memo, setMemo] = useState(null);
-  if (!portfolio || !portfolio.current_price) return null;
 
   const runResearch = async (q) => {
     if (!q?.trim()) return;
@@ -2488,7 +2486,6 @@ function CommitteeScreen() {
     risk: { status: 'idle', text: '' },
     pm:   { status: 'idle', text: '' },
   });
-  if (!portfolio || !portfolio.current_price) return null;
 
   const runCommittee = async (q) => {
     if (!q?.trim()) return;
