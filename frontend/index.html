@@ -2896,13 +2896,7 @@ root.render(
 );
 
 // Register service worker (only on http/https; file:// won't allow it)
-if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(() => {
-      /* offline fallback isn't critical for the demo */
-    });
-  });
-}
+// Service worker disabled for GitHub Pages deployment
 
 </script>
 
