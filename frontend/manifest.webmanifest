@@ -1,0 +1,41 @@
+{
+  "name": "Financial OS",
+  "short_name": "FOS",
+  "description": "Personal finance, planning, and investment committee",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#E8450A",
+  "background_color": "#F0F2F5",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Log expense",
+      "url": "./index.html?screen=home&focus=log",
+      "description": "Quick-log a spend"
+    },
+    {
+      "name": "Plan",
+      "url": "./index.html?screen=plan",
+      "description": "Today's tasks"
+    },
+    {
+      "name": "Committee",
+      "url": "./index.html?screen=committee",
+      "description": "Investment committee debate"
+    }
+  ]
+}

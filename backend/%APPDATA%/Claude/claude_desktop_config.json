@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "financial-os": {
+      "command": "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+      "args": ["C:\\Users\\admin\\Documents\\Financial OS\\financial-os\\backend\\mcp_server.py"]
+    }
+  }
+}
