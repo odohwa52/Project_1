@@ -1031,7 +1031,7 @@ function parseExpense(text) {
 // FORMATTERS
 // ═══════════════════════════════════════════════════════════════════
 const krw = (n) => '₩' + (n || 0).toLocaleString('ko-KR');
-const pct = (n, dp = 2) => (n >= 0 ? '+' : '') + n.toFixed(dp) + '%';
+const pct = (n, dp = 2) => { if (n == null || isNaN(n)) return '—'; return (n >= 0 ? '+' : '') + n.toFixed(dp) + '%'; };
 
 function timeAgo(dateStr) {
   const diff = Date.now() - new Date(dateStr).getTime();
@@ -1472,6 +1472,7 @@ function HomeScreen() {
   const reimb = useReimbursementsOutstanding();
   const today = useTodayView();
   const portfolio = usePortfolioSnapshot();
+  if (!portfolio || !portfolio.current_price) return null;
 
   const reimbTotal = reimb.reduce((s, r) => s + r.owes, 0);
 
@@ -2275,6 +2276,8 @@ function PortfolioScreen() {
   const [query, setQuery] = useState('');
   const [running, setRunning] = useState(false);
   const [memo, setMemo] = useState(null);
+
+  if (!portfolio || !portfolio.current_price) return null;
 
   const runResearch = async (q) => {
     if (!q?.trim()) return;
