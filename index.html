@@ -2270,11 +2270,11 @@ function AddPlanModal({ onClose, friends }) {
 // ═══════════════════════════════════════════════════════════════════
 function PortfolioScreen() {
   const portfolio = usePortfolioSnapshot();
-   if (!portfolio || !portfolio.current_price) return null;
   const { state, recordResearch } = useApp();
   const [query, setQuery] = useState('');
   const [running, setRunning] = useState(false);
   const [memo, setMemo] = useState(null);
+  if (!portfolio || !portfolio.current_price) return null;
 
   const runResearch = async (q) => {
     if (!q?.trim()) return;
@@ -2477,7 +2477,6 @@ Cash situation is workable. Card B usage is well within month-end limits and out
 // ═══════════════════════════════════════════════════════════════════
 function CommitteeScreen() {
   const portfolio = usePortfolioSnapshot();
-   if (!portfolio || !portfolio.current_price) return null;
   const summary = useSpendingSummary();
   const reimb = useReimbursementsOutstanding();
   const { recordCommittee, state } = useApp();
@@ -2489,6 +2488,7 @@ function CommitteeScreen() {
     risk: { status: 'idle', text: '' },
     pm:   { status: 'idle', text: '' },
   });
+  if (!portfolio || !portfolio.current_price) return null;
 
   const runCommittee = async (q) => {
     if (!q?.trim()) return;
