@@ -2536,6 +2536,12 @@ try {
     setRunning(false);
   };
 
+  const reset = () => {
+    setQuery('');
+    setRunning(false);
+    setAgents({ bull: { status: 'idle', text: '' }, bear: { status: 'idle', text: '' }, risk: { status: 'idle', text: '' }, pm: { status: 'idle', text: '' } });
+  };
+
   const showStage = agents.bull.status !== 'idle';
 
   return (
@@ -2811,13 +2817,14 @@ function App() {
     { id: 'settings', label: 'Settings', icon: 'settings' },
   ];
 
-  const screens = {
-    home: <HomeScreen />,
-    plan: <PlanScreen />,
-    portfolio: <PortfolioScreen />,
-    committee: <CommitteeScreen />,
-    settings: <SettingsScreen />,
+  const screenMap = {
+    home: HomeScreen,
+    plan: PlanScreen,
+    portfolio: PortfolioScreen,
+    committee: CommitteeScreen,
+    settings: SettingsScreen,
   };
+  const ActiveScreen = screenMap[screen];
 
   return (
     <div className="app">
@@ -2863,7 +2870,7 @@ function App() {
 
       {/* Main */}
       <main className="main">
-        {screens[screen]}
+        <ActiveScreen />
       </main>
 
       {/* Bottom nav (mobile) */}
