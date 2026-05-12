@@ -1345,7 +1345,11 @@ function usePortfolioSnapshot() {
 
   const [data, setData] = useState(fallback);
   useEffect(() => {
-    api.get('/api/portfolio/snapshot').then(d => setData(d)).catch(() => {});
+    api.get('/api/portfolio/snapshot').then(d => {
+      if (d && typeof d.current_price === 'number' && Array.isArray(d.history) && d.history.length > 0) {
+        setData(d);
+      }
+    }).catch(() => {});
   }, []);
 
   return data;
